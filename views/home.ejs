@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/css/home.css">
+<% if (locals.usersList) {%>
+        <body class="admin-view">
+                <h1>Welcome ! </h1>
+                <h4> Your are signed in as <%= user.name%></h4>
+                <a href="/users/destroy-session">Sign out</a> 
+                <h4>List of employees and admins </h4>
+
+                <% for(emp of usersList){%> 
+                        <span class="admin-view">
+                                <p><%=emp.name%></p>
+                                <% if (!emp.isAdmin){%>
+                                <a href="/users/edit/<%=emp._id%>">edit</a>
+                                <%}%>
+                        </span>
+                        
+                <%}%>
+                <div>
+                        <a href="/users/addNew">Add a new employee</a>
+                </div>
+        </body>
+                       
+<%} else {%>
+        <body class="employee-view">
+                <h1>Welcome ! </h1>
+                <h4> Your are signed in as <%= locals.user.name%></h4>
+                <a href="/users/destroy-session">Sign out</a>   
+        </body>
+        
+<%}%>    
