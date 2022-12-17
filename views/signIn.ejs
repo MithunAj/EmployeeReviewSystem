@@ -1,7 +1,21 @@
-<form action="/users/create-session">
-    <input type="email" name="email" placeholder="enter your email" required>
-    <input type="password" name="password" placeholder="enter your password" required>
-    <input type="submit" value="Sign in">
-</form>
+<link rel="stylesheet" href="/css/sign_in.css">
+<body>
+    
 
-<a href="/users/signUp">Click to register as a new employee</a>
+    <div class="Sign-in">
+        <h4> Enter your sign in details</h4>
+        <form action="/users/create-session">
+            <div>
+            <input type="email" name="email" placeholder="enter your email" required>
+            </div>
+            <div>
+            <input type="password" name="password" placeholder="enter your password" required>
+            </div>
+            <div>
+            <input type="submit" value="Sign in">
+            </div>
+        </form>
+        <a href="/users/signUp">Click to register as a new employee</a>
+    </div>    
+
+</body>

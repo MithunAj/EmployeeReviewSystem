@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="css/admin_view.css">
+
+<body >
+    <header class="admin-header">
+        <h1>Welcome <%= user.name%> ! </h1>
+        <a href="/users/destroy-session">Sign out</a> 
+    </header>
+    <div class="admin-view">
+        <h4 class="title">List of employees and admins </h4>
+        <div class="employees-list">
+                <div id="employees-list-container">
+                <% for(emp of usersList){%> 
+                        
+                                <span class="employee-index">
+                                    <span><%=emp.name%> </span><% if (!emp.isAdmin){%>
+                                    <span><a href="/users/edit/<%=emp._id%>">edit</a></span>
+                                    <br>
+                                    <%} else {%>
+                                            <span><small>admin</small></span>
+                                            <br>
+                                    <%}%> 
+                                </span>
+                                
+                        
+                        
+                <%}%>
+                <a href="/users/addNew">Add a new employee</a>
+            </div>
+        </div>  
+
+        <div>
+                <h4 class="title">List of reviews</h4>
+                <div class="review-details">
+                    <% for (review of reviews) {%>
+                            <div class="review-index">
+                                <span class="review-info">
+                                        <span > Reviewer </span> 
+                                        <span><%= review.reviewBy.name%></span>
+                                </span>
+                                
+                                <span class="review-info">
+                                       <span> Reviewee </span> 
+                                       <span><%= review.reviewOf.name%></span>
+                                </span>
+                                
+                                <%if(review.isDone) {%>
+                                    <span class="feedback-info">
+                                        <div class="title">Feedback</div>
+                                        
+                                        <div class="feedback-box"><%= review.content%></div>
+                                    </span>
+                                    <span class="title">
+                                        <a href="/reviews/update/<%=review._id%>"> Edit review </a> 
+                                    </span>
+                                    
+                                <%} else {%>
+                                    <span class="title">Yet to be done</span>        
+                                <%}%>
+                            </div>
+                            
+                    <%}%>
+                </div> 
+                <div class="add-review">
+                        <h4 class="title"> Create a new review</h4>
+                        <form action="/users/createReview" method="post">
+                                <span>
+                                    <label for="reviewBy"> Reviewer </label>
+                                    <select name="reviewBy" id="reviewBy" required>
+                                            <% for (emp of usersList){%>
+                                                    <% if (!emp.isAdmin){%>
+                                                    <option value="<%= emp._id%>"><%=emp.name%> </option>    
+                                                    <%}%>
+                                            <%}%>       
+                                    </select>
+                                </span>
+                                <span>
+                                    <label for="reviewOf"> Reviewee</label>
+                                    <select name="reviewOf" id="reviewOf" required>
+                                            <% for (emp of usersList){%>
+                                                    <% if (!emp.isAdmin){%>
+                                                    <option value="<%= emp._id%>"><%=emp.name%> </option>    
+                                                    <%}%>
+                                            <%}%>       
+                                    </select>
+                                </span>
+                                <input type="submit" value="Create review">
+                        </form>
+                </div>
+            
+        </div> 
+    </div>    
+    
+</body>

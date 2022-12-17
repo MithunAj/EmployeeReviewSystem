@@ -4,7 +4,7 @@ const router = express.Router();
 const userController = require('../controller/users')
 const passport = require('passport');
 
-router.get('/edit/:id',userController.editEmployee);
+router.get('/edit/:id',passport.checkAuthentication,userController.editEmployee);
 
 router.get('/destroy-session',userController.destroySession);
 
@@ -16,16 +16,18 @@ router.get('/signUp',userController.userSignUp);
 
 router.get('/create-session',passport.authenticate('local',{failureRedirect: 'signIn',session:true}),userController.createSession);
 
-router.post('/update/:id',userController.updateUser);
+router.post('/update/:id',passport.checkAuthentication,userController.updateUser);
 
-router.get('/makeAdmin/:id',userController.makeAdmin);
+router.get('/makeAdmin/:id',passport.checkAuthentication,userController.makeAdmin);
 
-router.get('/remove/:id',userController.removeUser);
+router.get('/remove/:id',passport.checkAuthentication,userController.removeUser);
 
-router.get('/addNew',function(req,res){
+router.get('/addNew',passport.checkAuthentication,function(req,res){
     return res.render('add_user');
 })
 
-router.post('/createNew',userController.addNew);
+router.post('/createNew',passport.checkAuthentication,userController.addNew);
+
+router.post('/createReview',passport.checkAuthentication,userController.createReview);
 
 module.exports = router;

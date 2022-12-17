@@ -1,0 +1,11 @@
+<% if(review) {%>
+    <link rel="stylesheet" href="/css/update_review.css">
+    <div class="update-review">
+        <span> Update your review for <%= review.reviewOf.name%></span>
+        <form action="/reviews/update/<%=review._id%>" method="post">
+                <textarea name="content" cols="30" rows="3" placeholder="<%=review.content%>" required></textarea><br>
+                <input type="submit" value="Update">
+        </form>
+    </div>
+    
+<%}%>

@@ -1,7 +1,37 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .admin-view{
-    background-color: pink;
+    background-color: rgb(231, 192, 147);
+    border-radius: 15px;
+    padding: 5px;
+    height: 100%;
 }
 
 .employee-view{
     background-color: grey;
+    border-radius: 15px;
+    padding: 5px;
+    height: 100%;
 }
+
+.admin-header{
+    background-color: rgb(186, 227, 165);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.employee-header{
+    background-color: rgb(19, 225, 240);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+

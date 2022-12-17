@@ -1,25 +1,28 @@
 <% if(emp){%>
+    <link rel="stylesheet" href="/css/update_employee.css">
+    <div class="update-employee">
+        <div class="update-items">
+            <p>name : <%= emp.name%></p>
+            <p>email : <%= emp.email%></p>
+            <p>role: Employee </p>  
+        </div>
+        <div id="update-form" class="update-items">
+            <h4>Update employee details</h4>
+            <form action="/users/update/<%=emp._id%>" method="POST">
+                <input type="text" name="name" placeholder="<%=emp.name%>">
+                <input type="email" name="email" placeholder="<%= emp.email%>">
+                <input type="password" name="password" placeholder="Enter password">
+                <input type="password" name="confirm_password" placeholder="Confirm password">
+                <input type="submit" value="Update">
+            </form>
+        </div>
 
-    <p>name : <%= emp.name%></p>
-    <p>email : <%= emp.email%></p>
-    <p>role: Employee </p>
-    
-    <div id="update-form">
-        <h4>Update employee details</h4>
-        <form action="/users/update/<%=emp._id%>" method="POST">
-            <input type="text" name="name" placeholder="<%=emp.name%>">
-            <input type="email" name="email" placeholder="<%= emp.email%>">
-            <input type="password" name="password" placeholder="Enter password">
-            <input type="password" name="confirm_password" placeholder="Confirm password">
-            <input type="submit" value="Update">
-        </form>
-    </div>
+        <div class="update-items">
+            <a href="/users/makeAdmin/<%=emp._id%>">Make <%=emp.name%> as admin  </a>
+        </div>
 
-    <div>
-        <a href="/users/makeAdmin/<%=emp._id%>">Make <%=emp.name%> as admin  </a>
-    </div>
-
-    <div>
-        <a href="/users/remove/<%=emp._id%>">Remove <%=emp.name%> </a>
+        <div class="update-items">
+            <a href="/users/remove/<%=emp._id%>">Remove <%=emp.name%> </a>
+        </div>
     </div>
 <%}%>

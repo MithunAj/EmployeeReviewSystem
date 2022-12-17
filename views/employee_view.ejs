@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="css/admin_view.css">
+<body style="text-align: center;">
+    <header class="employee-header">
+        <h1>Welcome <%= locals.user.name%>! </h1>
+        <a href="/users/destroy-session">Sign out</a> 
+    </header>
+
+    <div class="employee-view" >
+            <h4>Pending reviews</h4>
+            <% for (review of reviews) { %>
+                    <%if (!review.isDone) {%>
+                    <div id="review-details">
+                            <span> Write your review for <%= review.reviewOf.name%></span>
+                            <form action="reviews/submit/<%=review._id%>" method="post">
+                                    <textarea name="content" cols="30" rows="3"></textarea><br>
+                                    <input type="submit" value="Submit">
+                            </form>
+                    </div>
+                    <%}%>
+            <%}%>
+    </div>   
+</body>
