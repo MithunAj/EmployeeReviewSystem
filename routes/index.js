@@ -29,6 +29,10 @@ router.get('/home',async function(req,res){
     }
 })
 
+router.get('/',function(req,res){
+    return res.redirect('/home');
+})
+
 router.use('/users',require('./users'))
 
 router.use('/reviews',require('./review'));

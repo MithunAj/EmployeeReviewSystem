@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://MithunAj:TqZQxDDMNLfQgTiG@cluster0.per79te.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect('mongodb://localhost/ERS');
 
 const db = mongoose.connection;
 
@@ -13,3 +13,15 @@ db.once('open',function(){
 });
 
 module.exports = db;
+
+
+
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = 'mongodb+srv://MithunAj:TqZQxDDMNLfQgTiG@cluster0.per79te.mongodb.net/?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true};
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+
+//   module.exports = client;
