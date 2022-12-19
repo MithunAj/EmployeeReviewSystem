@@ -18,7 +18,7 @@ With following capablities
 - Assign employees to participate in another employee's performance review
 
 
-###$ Employee view
+#### Employee view
 - List of performance review requiring feedback
 - Submit feedback
 
